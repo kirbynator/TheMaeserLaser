@@ -4,11 +4,24 @@ class Contact extends React.Component {
     return (
       <div
         style={{
-          height: "25%",
+          marginTop: "25px",
           width: "100%",
-          backgroundColor: "#002755"
+          backgroundColor: "rgba(42, 47, 59, 0.5)",
+          color: "#fff"
         }}
-      ></div>
+      >
+        <h4 style={{ padding: "15px", paddingBottom: "5px" }}>
+          Questions, Comments, want to write for us? Get in touch and we'll get
+          back to you as soon as we can. We look forward to hearing from you!{" "}
+          <a href="mailto:maeserlaserbyu@gmail.com" subect="Query">
+            maeserlaserbyu@gmail.com
+          </a>
+        </h4>
+        <h5 style={{ padding: "15px", paddingTop: "0px" }}>
+          Website made by Zach Kirby:{" "}
+          <a href="mynameiszacharykirby.com">mynameiszacharykirby.com</a>
+        </h5>
+      </div>
     );
   }
 }

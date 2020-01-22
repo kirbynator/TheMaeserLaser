@@ -3,9 +3,12 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Staff from "./Staff";
+import Banner from "./BottomBanner.js";
+import Creators from "./EditAuthors";
 
 class Landing extends React.Component {
   render() {
+    
     return (
       <div
         style={{
@@ -14,7 +17,7 @@ class Landing extends React.Component {
           backgroundColor: "#002755"
         }}
       >
-        <div
+        {/* <div
           style={{
             position: "fixed",
             width: "100%",
@@ -38,10 +41,12 @@ class Landing extends React.Component {
             <h3>Articles</h3> <h3>Contact Us</h3>
             <h3></h3>
           </div>
-        </div>
+        </div> */}
         <Home />
         <About />
         <Staff />
+        <Creators />
+        <Banner />
         <Contact />
       </div>
     );

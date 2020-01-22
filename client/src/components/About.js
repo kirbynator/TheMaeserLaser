@@ -26,10 +26,35 @@ class About extends React.Component {
               width: "84%",
               height: "92%",
               marginLeft: "8%",
-              boxShadow: "10px 10px 5px #2a2f3b"
+              boxShadow: "10px 10px 5px #2a2f3b",
+              display: "flex",
+              justifyContent: "flex-end"
             }}
           >
-            <h1>heack yahahehae</h1>
+            <div
+              style={{
+                color: "#fff",
+                padding: "5px",
+                background: "rgb(42, 47, 59)",
+                background: "rgba(42, 47, 59, 0.5)",
+                width: "30%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column"
+              }}
+            >
+              <h1>Why "Maeser?"</h1>
+              <h2 style={{ textAlign: "center" }}>
+                Built in 1911 and still standing strong, the Maeser building is
+                an key fixture of the BYU campus. Its sturdy construction and
+                timeless, classical design are a fitting symbol for the ideals
+                The Maeser Laser upholds and defends. While the building is
+                named for Karl G. Maeser, The Maser Laser does not claim to be
+                directly associated with the late Mr. Maeser and derives its
+                name solely from the building on BYU campus.
+              </h2>
+            </div>
           </div>
         </div>
       </div>
