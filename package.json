@@ -22,17 +22,16 @@
     "react-is": "^16.10.2",
     "react-popper": "^1.3.4",
     "regenerator-runtime": "^0.13.3",
-    "semantic-ui-react": "^0.88.1",
     "shallowequal": "^1.1.0",
     "typed-styles": "^0.0.7",
     "warning": "^4.0.3"
   },
   "devDependencies": {},
   "scripts": {
-  "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
-  "deploy": "cp -a client/build/. public/",
-  "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
-},
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirbynator/TheMaeserLaser.git"
