@@ -37,6 +37,7 @@ class Carosal extends React.Component {
 
   render() {
     if (this.state.data[this.state.num]) {
+      if(window.innerWidth > 1000){
       return (
         <div
           class="Carosal"
@@ -93,7 +94,59 @@ class Carosal extends React.Component {
             color="grey"
           />
         </div>
-      );
+      )}
+      else{
+        return(<div style={{height: '500px'}}>
+           <Container
+            as={Link}
+            to={`/articles/${this.state.data[this.state.num].id}`}
+            style={{
+              backgroundImage: `url(${this.state.data[this.state.num].image})`,
+              borderRadius: "15px",
+              backgroundColor: "#000",
+              backgroundPosition: "center",
+              backgroundSize: "100% 100%",
+              width: "80%",
+              height: "80%",
+              boxShadow: "10px 10px 5px #2a2f3b",
+              display: "flex",
+              alignItems: "flex-end"
+            }}
+          >
+            <h1
+              style={{
+                color: "#fff",
+                padding: "5px",
+                background: "rgb(42, 47, 59)",
+                background: "rgba(42, 47, 59, 0.5)",
+                width: "100%"
+              }}
+            >
+              {this.state.data[this.state.num].title}
+            </h1>
+          </Container>
+          <div style={{display: "flex",
+          justifyContent: "space-around"}}>
+          <Icon
+            style={{ cursor: "pointer" }}
+            onClick={() => this.minNum()}
+            name="angle left"
+            size="massive"
+            inverted
+            color="grey"
+          />
+           <Icon
+            style={{ cursor: "pointer" }}
+            onClick={() => this.addNum()}
+            name="angle right"
+            size="massive"
+            inverted
+            color="grey"
+          />
+          </div>
+          </div>
+          )
+      }
     } else {
       return "LOADING";
     }

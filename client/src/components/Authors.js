@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 class Author extends React.Component {
   state = {
     name: "",
@@ -8,8 +9,37 @@ class Author extends React.Component {
     imageone: "",
     imagetwo: "",
     title: "",
-    blurb: ""
+    blurb: "",
+    redirect: false
   };
+
+  redirect() {
+    if (this.props.p && this.state.redirect) {
+      return <Redirect to={`/profiles/${this.props.p.id}`} />;
+    } else if (this.state.redirect) {
+      axios.get("/api/profiles").then(res => {
+        this.setState({ theID: res.data[res.data.length - 1].id });
+      });
+      console.log(this.state.theID);
+      if (this.state.theID) {
+        return <Redirect to={`/profiles/${this.state.theID}`} />;
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.p) {
+      this.setState({
+        name: this.props.p.name,
+        bio: this.props.p.bio,
+        blurb: this.props.p.blurb,
+        title: this.props.p.title,
+        imageone: this.props.p.imageone,
+        imagetwo: this.props.p.imagetwo,
+        edit: true
+      });
+    }
+  }
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -18,7 +48,18 @@ class Author extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, bio, imageone, imagetwo, title, blurb } = this.state;
+    const { name, bio, imageone, imagetwo, title, blurb, edit } = this.state;
+    if(edit){
+axios.patch(`/api/profiles/${this.props.p.id}`,{
+  name: name,
+  bio: bio,
+  blurb: blurb,
+  title: title,
+  imageone: imageone,
+  imagetwo: imagetwo
+}) .then(res => {
+  this.setState({ redirect: true })})
+    }else{
     axios.post("/api/profiles", {
       title: title,
       name: name,
@@ -28,7 +69,7 @@ class Author extends React.Component {
       imagetwo: imagetwo,
       title: title
     });
-  };
+  }}
 
   render() {
     const { title, name, bio, imageone, imagetwo, blurb } = this.state;
@@ -78,6 +119,7 @@ class Author extends React.Component {
           />
           <Button>Submit</Button>
         </Form>
+        {this.redirect()}
       </div>
     );
   }

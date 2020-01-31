@@ -3,7 +3,7 @@ import axios from "axios";
 import { Image } from "semantic-ui-react";
 import Banner from "./BottomBanner";
 import Contact from "./Contact";
-import { Link, withRouter } from "react-router-dom";
+import { Link,} from "react-router-dom";
 class Profile extends React.Component {
   state = { data: {} };
   componentDidMount() {

@@ -1,5 +1,4 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
 class Staff extends React.Component {
   render() {
     return (
@@ -13,7 +12,7 @@ class Staff extends React.Component {
         ></div>
         <div
           style={{
-            height: `${window.innerHeight}px`,
+            paddingBottom:"105px",
             width: "100%",
             backgroundColor: "#6b7387"
           }}
@@ -24,7 +23,7 @@ class Staff extends React.Component {
               backgroundPosition: "center",
               backgroundSize: "100% 100%",
               width: "84%",
-              height: "92%",
+              
               marginLeft: "8%",
               boxShadow: "10px 10px 5px #2a2f3b",
               display: "flex",
@@ -33,8 +32,8 @@ class Staff extends React.Component {
               color: "#002755"
             }}
           >
-            <h1 style={{ padding: "15px", fontSize: "75px" }}>Our Mission</h1>
-            <h1 style={{ padding: "15px" }}>
+            <h1 style={{ padding: "15px", fontSize: window.innerHeight > 1000 ? "75px" : "25px" }}>Our Mission</h1>
+            <h1 style={{ padding: "15px", marginTop: window.innerHeight > 1000 ? null : "-25px", fontSize: window.innerHeight > 1000 ? "75px" : "18px"  }}>
               We strive to:
               <ul>
                 <li>

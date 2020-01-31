@@ -1,30 +1,29 @@
 import React from "react";
 import Axios from "axios";
 import { Button, Card, Image } from "semantic-ui-react";
-import Articles from "./Articles";
+import Authors from "./Authors";
 
-class Crticles extends React.Component {
+class Cuthors extends React.Component {
   state = {
-    toogle: false,
+    name: "",
+    bio: "",
+    imageone: "",
+    imagetwo: "",
     title: "",
-    author: "",
-    body: "",
-    image: "",
-    tags: "",
-    eye: false
+    blurb: ""
   };
   componentDidMount() {
     this.setState({
+      name: this.props.p.name,
+      bio: this.props.p.bio,
+      blurb: this.props.p.blurb,
       title: this.props.p.title,
-      author: this.props.p.author,
-      body: this.props.p.body,
-      image: this.props.p.image,
-      tags: this.props.p.tags
+      imageone: this.props.p.imageone,
+      imagetwo: this.props.p.imagetwo
     });
   }
-
   d(v){
-    Axios.delete(`/api/articles/${v}`).then(res=>
+    Axios.delete(`/api/profiles/${v}`).then(res=>
 this.props.d(v)
     )
   }
@@ -33,7 +32,7 @@ this.props.d(v)
     if (this.state.toogle === true) {
       return (
         <Card.Content extra>
-          <Articles p={p}></Articles>
+          <Authors p={p}></Authors>
           <Button
             onClick={() => this.setState({ toogle: !this.state.toogle })}
             basic
@@ -68,17 +67,18 @@ this.props.d(v)
     if (p) {
       return (
         <Card id={p.id}>
-          <Card.Content>
-            <Image floated="right" size="mini" src={p.image} />
-            <Card.Header>{p.title}</Card.Header>
-            <Card.Meta>{p.author}</Card.Meta>
-          </Card.Content>
-          {this.show(p)}
-        </Card>
+        <Card.Content>
+          <Image floated="right" src={p.imageone} />
+          <Card.Header>{p.name}</Card.Header>
+          <Card.Meta>{p.title}</Card.Meta>
+          <Card.Description>{p.blurb}</Card.Description>
+        </Card.Content>
+        {this.show(p)}
+      </Card>
       );
     } else {
       return <h2>Loading</h2>;
     }
   }
 }
-export default Crticles;
+export default Cuthors;

@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import { Button, Card, Image } from "semantic-ui-react";
+import { Card} from "semantic-ui-react";
 import EditArticlesCard from "./ArticleEditCard";
 
 class Erticles extends React.Component {
@@ -13,7 +13,6 @@ class Erticles extends React.Component {
   }
 
   delete = v => {
-    Axios.delete(`/api/articles/${v}`);
     Axios.get("/api/articles").then(res =>
       this.setState({ data: [...res.data] })
     );

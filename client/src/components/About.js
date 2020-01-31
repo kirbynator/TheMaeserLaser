@@ -37,7 +37,7 @@ class About extends React.Component {
                 padding: "5px",
                 background: "rgb(42, 47, 59)",
                 background: "rgba(42, 47, 59, 0.5)",
-                width: "30%",
+                width: window.innerWidth > 1000 ? "30%" : "100%",
                 height: "100%",
                 display: "flex",
                 alignItems: "center",

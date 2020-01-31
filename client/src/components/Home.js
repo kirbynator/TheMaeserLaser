@@ -1,6 +1,6 @@
 import React from "react";
 import Carosal from "./Carosal";
-import { Icon, Image, Form, Container } from "semantic-ui-react";
+import { Icon, Image, Form, Container,} from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 class Home extends React.Component {
@@ -16,6 +16,7 @@ class Home extends React.Component {
     const { search } = this.state;
     axios.get(`/api/search/${search}`).then(res => {
       this.setState({ results: res.data });
+      alert(res.data)
     });
   };
 
@@ -56,6 +57,7 @@ class Home extends React.Component {
   }
 
   render() {
+    if(window.innerWidth > 1000){
     return (
       <div
         style={{
@@ -105,11 +107,58 @@ class Home extends React.Component {
               />
             </Form>
           </div>
+          
           {this.results()}
         </div>
         <Carosal></Carosal>
       </div>
-    );
+    )}
+    else{
+      return(
+        <div>
+      <div style={{ paddingTop: "5%", width: "100%", height: "70%" }}>
+            <Image
+              style={{ zIndex: "0" }}
+              src="https://i.imgur.com/5EfBiKU.png"
+              />
+              </div>
+              <Carosal></Carosal>
+              <div style={{ justifyContent: "center", display: "flex", }}>
+            <Icon
+              style={{ cursor: "pointer" }}
+              onClick={() => this.redirect(1)}
+              inverted
+              color="grey"
+              name="facebook square"
+              size="huge"
+            />
+            <Icon
+              style={{ cursor: "pointer" }}
+              onClick={() => this.redirect(2)}
+              inverted
+              color="grey"
+              name="twitter square"
+              size="huge"
+            />
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input
+                style={{
+                  height: "52px",
+                  width: "110%",
+                  paddingTop: "4px",
+                  marginLeft: "7px"
+                }}
+                name="search"
+                required
+                value={this.state.search}
+                onChange={this.handleChange}
+                placeholder="Search"
+              />
+            </Form>
+          </div>
+          {this.results()}
+          </div>)
+    }
   }
 }
 export default Home;
