@@ -14,7 +14,7 @@
     "gud": "^1.0.0",
     "js-tokens": "^4.0.0",
     "keyboard-key": "^1.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "loose-envify": "^1.4.0",
     "object-assign": "^4.1.1",
     "popper.js": "^1.15.0",
